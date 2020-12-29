@@ -1,3 +1,26 @@
 ###
+GET http://localhost:4000/api/courses
 
-PUT http://localhost:4000/api/courses
+###
+POST http://localhost:4000/api/courses
+Content-Type: application/json
+
+{
+    "name": "ESPERANTO 2",
+    "duration": "30",
+    "campus": "Bogotá",
+    "workingShift": "mañana",
+    "description": "Nuevo curso sobre el stack MEAN"
+}
+###
+GET http://localhost:4000/api/courses/
+###
+DELETE http://localhost:4000/api/courses/5fea6bfa04ad90e259f8fbf6
+
+###
+PUT http://localhost:4000/api/courses/5fea7e74c8471ef1b6d6e980
+Content-Type: application/json
+
+{
+    "name": "ESPERANT0 4"
+}
