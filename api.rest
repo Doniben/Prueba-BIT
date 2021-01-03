@@ -1,0 +1,35 @@
+###
+GET http://localhost:4000/api/courses
+
+###
+POST http://localhost:4000/api/courses
+Content-Type: application/json
+
+{
+    "name": "MATEMÁTICAS PARA PROGRAMACIÓN",
+    "duration": "30",
+    "dateStart": "Junio 30 de 2021",
+    "dateFinal": "Septiembre 27 de 2021",
+    "campus": "Cali",
+    "workingShift": "tarde",
+    "description": "Mejora tus algoritmos"
+}
+###
+GET http://localhost:4000/api/courses/
+###
+DELETE http://localhost:4000/api/courses/5fea6bfa04ad90e259f8fbf6
+
+###
+PUT http://localhost:4000/api/courses/5fea7e74c8471ef1b6d6e980
+Content-Type: application/json
+
+{
+    "name": "MATEMÁTICAS PARA PROGRAMACIÓN",
+    "duration": "30",
+    "dateStart": "Junio 30",
+    "dateFinal": "Septiembre 27",
+    "campus": "Ibagué",
+    "workingShift": "mañana",
+    "description": "Mejora tus algoritmos con matemáticas aplicadas a la programación"
+}
+
