@@ -1,0 +1,142 @@
+<div class="row">
+    <div class="col-md-12 d-flex justify-content-center">
+        <div class="card" style="width: 30rem;">
+            
+        </div>
+    </div>
+    <div>
+        <button class="btn btn-primary d-flex align-items-center" data-toggle="modal" data-target="#AddCourseModal"><i class="material-icons">add</i> Agregar Curso
+
+        </button>
+    </div>
+    <div class="col-md-12  pt-4">
+        <table class="table table-stripe d-f justify-content-center">
+            <thead>
+                <tr>
+                    <th>Curso</th>
+                    <th>Duración</th>
+                    <th>Fecha de inicio</th>
+                    <th>Fecha de cierre</th>
+                    <th>Sede</th>
+                    <th>Jornada</th>
+                    <th>Descripción</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let course of courseService.courses">
+                    <td>{{ course.name }}</td>
+                    <td>{{ course.duration }} horas</td>
+                    <td>{{ course.dateStart }}</td>
+                    <td>{{ course.dateFinal }}</td>
+                    <td>{{ course.campus }}</td>
+                    <td>{{ course.workingShift }}</td>
+                    <td>{{ course.description }}</td>
+                    <td>
+                        <button class="btn btn-success btn-sm"><i class="material-icons">
+                            edit
+                        </i></button>
+                        <button class="btn btn-warning btn-sm"><i class="material-icons">delete</i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Form Modal Add Course -->
+<div class="modal fade" id="AddCourseModal">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header text-white">
+                <h5 class="modal-title">Agregar Curso</h5>
+                <button class="close" data-dismiss="modal"></button>
+                <span>&times;</span>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="form">
+                    <div class="form-group">
+                        <input 
+                        name="name" 
+                        type="text" 
+                        class="form-control" 
+                        placeholder="Nombre del curso"
+                        formControlName="name"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <input 
+                        name="duration" 
+                        type="number" 
+                        class="form-control" 
+                        placeholder="Duración en horas"
+                        formControlName="duration"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">Fecha de inicio</label>
+                            <input 
+                            name="dateStart" 
+                            type="date" 
+                            class="form-control" 
+                            placeholder="Fecha de inicio"
+                            formControlName="dateStart"
+                            />
+                          </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">Fecha de cierre</label>
+                            <input 
+                            name="dateFinal" 
+                            type="date" 
+                            class="form-control" 
+                            placeholder="Fecha de cierre"
+                            formControlName="dateFinal"
+                            />
+                          </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label name="campus" class="input-group-text" for="inputGroupSelect01">Sede</label>
+                            </div>
+                                <select 
+                                class="custom-select" 
+                                id="inputGroupSelect01"
+                                formControlName="campus">
+                                <option [value]="itemCampus" *ngFor="let itemCampus of campus" [ngValue]="itemCampus">{{itemCampus.name}}</option>
+                                </select>
+                            </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <label name="workingShift" class="input-group-text" for="inputGroupSelect01">Jornada</label>
+                            </div>
+                            <select 
+                            class="custom-select" 
+                            id="inputGroupSelect01"
+                            formControlName="workingShift">
+                            <option [value]="item" *ngFor="let item of workingShift" [ngValue]="item">{{item.name}}</option>
+                            </select>
+                          </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea 
+                        name="description" 
+                        class="form-control" 
+                        rows="5" 
+                        placeholder="Descripción"
+                        formControlName="description"></textarea>
+                    </div> 
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-light">Limpiar</button>
+                <button (click)="addCourse()" class="btn btn-primary">Guardar curso</button>
+            </div>
+        </div>
+    </div>     
+</div>
